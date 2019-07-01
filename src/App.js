@@ -11,18 +11,53 @@ class App extends React.Component {
 
     this.state = {
       books: "",
-      search: "",
+      title:"",
+      search: "JavaScript",
       bookTitle: "",
       author: "",
       img: "",
-      href: ""
+      href: "",
+      isLoaded: false,
+      error:""
     };
     this.onBookInput = this.onBookInput.bind(this);
+
   }
 
+
+
   handleDataChange() {
-    this.setState({img: "images/books/react1.jpeg", bookTitle: "Learning React", author: "Alex Banks,Eve Porcello", href: "hh"});
+  function handleErrors(response) {
+    if (!response.ok) {
+      console.log("Error!!!!");
+      throw Error(response.statusText);
+    }
+    console.log("okay");
+    return response;
   }
+
+  fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${this.state.search}+&maxResults=3`)
+    .then(handleErrors)
+    .then(res => res.json())
+    .then(
+      result => {
+        this.setState({
+          title: result.items[1].volumeInfo.title,
+          img: "images/books/react1.jpeg",
+          bookTitle: "Learning React",
+          author: "Alex Banks,Eve Porcello",
+          href: "hh",
+          isLoaded: true,
+          error: ""
+        });
+      },
+      error => {
+        this.setState({ error: "Please input valid city..." });
+      }
+    );
+}
+
 
 
   onBookInput(e) {
@@ -43,7 +78,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {city, search, bookTitle, author, href} = this.state;
+    const {city, search, bookTitle, author, href, title} = this.state;
 
     return (<div className="App">
       <div id="wrapper">
@@ -51,6 +86,7 @@ class App extends React.Component {
           <div className="inner">
             <Header/>
             <div>{search}</div>
+            <div>{this.state.title}</div>
             <AddBooks search={search} bookTitle={bookTitle} author={author} href={href}/>
           </div>
         </div>

@@ -5,7 +5,7 @@ class Sidebar extends React.Component {
     super(props);
     this.state = {
       searchInput: "",
-      value: "Python",
+      value: "Pythons",
       error: "error"
     };
 
