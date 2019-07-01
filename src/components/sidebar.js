@@ -1,25 +1,50 @@
-
 import React from "react";
 
-const Sidebar = props => {
-  return (
+class Sidebar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchInput: "",
+      value: "Python",
+      error: "error"
+    };
 
-    <div id="sidebar">
-      <div className="inner">
-        <div id="searchbar" className="">
-          <form>
-            <input type="text" placeholder="Find Books..." id="searchBooks" className="sideInput input" name="searchBooks" />
-              <button type="button" id="buttonForSearch">
-                Search</button>
-          </form>
+    this.handleChange = this.handleChange.bind(this);
+  }
 
+  handleChange(event) {
+
+    this.setState({ value: event.target.value });
+  }
+
+  render() {
+    const { handleSubmit } = this.props;
+    const { value } = this.state;
+
+    return (
+      <div id="sidebar">
+        <div className="inner">
+          <div id="searchbar" className="">
+            <form onSubmit={this.props.handleSubmit}>
+              <input
+                type="text"
+                name="search"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <button type="submit" >
+                Search
+              </button>
+            </form>
           </div>
           <header className="major">
             <h2>Results</h2>
           </header>
-          <div id="list" className=""></div>
+          <div id="list" className="" />
         </div>
-      </div>);
+      </div>
+    );
+  }
 }
 
 export default Sidebar;

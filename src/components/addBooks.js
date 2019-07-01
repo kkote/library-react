@@ -1,4 +1,3 @@
-
 import React from "react";
 import reactbook from "../Images/books/react1.jpeg";
 
@@ -10,11 +9,8 @@ class AddBooks extends React.Component {
       author: "",
       img:"",
       href:"",
-      city: this.props.city,
       error: "error"
     };
-
-
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,19 +20,15 @@ class AddBooks extends React.Component {
   }
 
   addABook() {
-
-
-    const clothesForWeather = [
+    {/* const someBooks = [
     {img: "images/books/react1.jpeg", bookTitle: "Learning React", author: "Alex Banks,Eve Porcello", href: "hh"}
-    ];
-
+  ]; */}
     this.setState({
       img: "images/books/react1.jpeg",
       bookTitle: "Learning React",
       author: "Alex Banks,Eve Porcello",
       href: "hh"
     });
-
   }
 
 
@@ -46,13 +38,11 @@ class AddBooks extends React.Component {
 
     return (<section id="bookcaseSection">
       <header className="major">
-      <h2>Bookcase
-      </h2>
+      <h2>Bookcase</h2>
       </header>
 
       <div id="bookImgMain" className="posts">
         <div className="container booksMedia">
-
             <img src={reactbook}alt="React1" className="image" />
             <i className="fa fa-times deleteBtn"></i>
             <div className="">

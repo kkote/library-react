@@ -444,43 +444,12 @@ button:active, .button:active {
   background-color: rgba(245, 106, 106, 0.15);
 }
 
-button:disabled, .button:disabled {
-  pointer-events: none;
-  opacity: 0.25;
-}
 
 .add {
   color: white;
   background: #f56a6a !important;
 }
 
-/* Posts */
-.posts {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin: 0 0 2em -6em;
-  width: calc(100% + 6em);
-}
-
-@media screen and (max-width: 736px) {
-  .posts {
-    margin: 0 0 2em -4.5em;
-    width: calc(100% + 4.5em);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .posts {
-    margin: 0 0 2em 0;
-    width: 100%;
-  }
-}
 
 /* Wrapper */
 #wrapper {
@@ -571,7 +540,7 @@ button:disabled, .button:disabled {
   background-color: #f5f6f7;
   font-size: 0.9em;
   position: relative;
-  /* width: 26em; */
+  width: 26em;
 }
 
 #sidebar h2 {
@@ -581,7 +550,7 @@ button:disabled, .button:disabled {
 #sidebar>.inner {
   padding: 2.2222222222em 2.2222222222em 2.4444444444em 2.2222222222em;
   position: relative;
-  /* width: 26em; */
+  width: 26em;
 }
 
 #sidebar>.inner>* {
@@ -606,61 +575,16 @@ button:disabled, .button:disabled {
   width: calc(100% + 4.4444444444em);
 }
 
-#sidebar .toggle {
-  text-decoration: none;
-  -moz-transition: left 0.5s ease;
-  -webkit-transition: left 0.5s ease;
-  -ms-transition: left 0.5s ease;
-  transition: left 0.5s ease;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  border: 0;
-  display: block;
-  height: 7.5em;
-  /* left: 26em; */
-  line-height: 7.5em;
-  outline: 0;
-  overflow: hidden;
-  position: absolute;
-  text-align: center;
-  text-indent: 7.5em;
-  top: 0;
-  width: 6em;
-  z-index: 10000;
-}
 
-#sidebar .toggle:before {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-transform: none !important;
-}
-
-#sidebar .toggle:before {
-  content: '\f0c9';
-  font-size: 2rem;
-  height: inherit;
-  left: 0;
-  line-height: inherit;
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  width: inherit;
-}
-
-#sidebar.inactive {
-  margin-left: -26em;
-}
 
 @media screen and (max-width: 1680px) {
   #sidebar {
-    /* width: 24em; */
+    width: 24em;
   }
 
   #sidebar>.inner {
     padding: 1.6666666667em 1.6666666667em 1.3333333333em 1.6666666667em;
-    /* width: 24em; */
+    width: 24em;
   }
 
   #sidebar>.inner>.alt {
@@ -669,21 +593,6 @@ button:disabled, .button:disabled {
     width: calc(100% + 3.3333333333em);
   }
 
-  #sidebar .toggle {
-    height: 6.25em;
-    /* left: 24em; */
-    line-height: 6.25em;
-    text-indent: 5em;
-    width: 5em;
-  }
-
-  #sidebar .toggle:before {
-    font-size: 1.5rem;
-  }
-
-  #sidebar.inactive {
-    margin-left: -24em;
-  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -696,9 +605,6 @@ button:disabled, .button:disabled {
     z-index: 10000;
   }
 
-  #sidebar.inactive {
-    box-shadow: none;
-  }
 
   #sidebar>.inner {
     -webkit-overflow-scrolling: touch;
@@ -717,15 +623,6 @@ button:disabled, .button:disabled {
     width: 100%;
   }
 
-  #sidebar .toggle {
-    text-indent: 6em;
-    width: 6em;
-  }
-
-  #sidebar .toggle:before {
-    font-size: 1.5rem;
-    margin-left: -0.4375em;
-  }
 
   body.is-preload #sidebar {
     display: none;
@@ -733,29 +630,7 @@ button:disabled, .button:disabled {
 }
 
 @media screen and (max-width: 736px) {
-  #sidebar .toggle {
-    text-indent: 7.25em;
-    width: 7.25em;
-  }
 
-  #sidebar .toggle:before {
-    color: #7f888f;
-    margin-left: -0.0625em;
-    margin-top: -0.25em;
-    font-size: 1.1rem;
-    z-index: 1;
-  }
-
-  #sidebar .toggle:after {
-    background: rgba(222, 225, 226, 0.75);
-    border-radius: 0.375em;
-    content: '';
-    height: 3.5em;
-    left: 1em;
-    position: absolute;
-    top: 1em;
-    width: 5em;
-  }
 }
 
 /* Header */

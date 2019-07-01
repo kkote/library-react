@@ -14,29 +14,30 @@ class App extends React.Component {
       search: "",
       bookTitle: "",
       author: "",
-      img:"",
-      href:""
+      img: "",
+      href: ""
     };
+    this.onBookInput = this.onBookInput.bind(this);
   }
 
   handleDataChange() {
-
-      this.setState({
-        img: "images/books/react1.jpeg",
-        bookTitle: "Learning React",
-        author: "Alex Banks,Eve Porcello",
-        href: "hh"
-      });
-
-
+    this.setState({img: "images/books/react1.jpeg", bookTitle: "Learning React", author: "Alex Banks,Eve Porcello", href: "hh"});
   }
+
+
+  onBookInput(e) {
+    e.preventDefault();
+    this.setState({search: e.target.search.value});
+  }
+
 
   componentDidMount() {
     this.handleDataChange();
   }
 
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.city !== prevState.city) {
+    if (this.state.search !== prevState.search) {
       this.handleDataChange();
     }
   }
@@ -46,18 +47,14 @@ class App extends React.Component {
 
     return (<div className="App">
       <div id="wrapper">
-        <div id="main">
+        <div xs={8} sm={8} md={8} lg={8}>
           <div className="inner">
             <Header/>
-            <AddBooks
-              search={search}
-              bookTitle={bookTitle}
-              author={author}
-              href={href}
-              />
+            <div>{search}</div>
+            <AddBooks search={search} bookTitle={bookTitle} author={author} href={href}/>
           </div>
         </div>
-        <Sidebar/>
+        <Sidebar xs={4} sm={4} md={4} lg={4} handleSubmit={this.onBookInput}/>
       </div>
       <Footer/>
     </div>);
