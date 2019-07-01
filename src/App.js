@@ -21,6 +21,7 @@ class App extends React.Component {
       error:""
     };
     this.onBookInput = this.onBookInput.bind(this);
+    this.handleDataChange = this.handleDataChange.bind(this);
 
   }
 
@@ -85,8 +86,12 @@ class App extends React.Component {
         <div xs={8} sm={8} md={8} lg={8}>
           <div className="inner">
             <Header/>
-            <div>{search}</div>
-            <div>{this.state.title}</div>
+            <div>
+              <div>{search}</div>
+              <div>{this.state.title}</div>
+              <div>{this.state.error}</div>
+            </div>
+
             <AddBooks search={search} bookTitle={bookTitle} author={author} href={href}/>
           </div>
         </div>
