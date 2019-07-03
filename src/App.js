@@ -20,6 +20,7 @@ class App extends React.Component {
       author: "",
       img: "",
       href: "",
+      selectedBook:"",
       isLoaded: false,
       error:""
     };
@@ -80,6 +81,7 @@ class App extends React.Component {
   }
 
 
+
   componentDidMount() {
     this.handleDataChange();
   }
@@ -96,15 +98,10 @@ class App extends React.Component {
 
     return (<div className="App">
       <div id="wrapper">
-        <div xs={8} sm={8} md={8} lg={8}>
+        <div id="main">
           <div className="inner">
             <Header/>
             <div>
-              <div>{search}</div>
-              <div>{this.state.title}</div>
-              <div>{this.state.error}</div>
-
-
 
             </div>
 
@@ -113,7 +110,7 @@ class App extends React.Component {
         </div>
 
 
-          <div id="sidebar">
+          <div id="sidebar" class="active">
             <div className="inner">
               <div id="searchbar" className="">
                 <Sidebar xs={4} sm={4} md={4} lg={4} handleSubmit={this.onBookInput}
@@ -129,8 +126,6 @@ class App extends React.Component {
                 )
               )} </div>
               </div>
-
-
 
             </div>
           </div>

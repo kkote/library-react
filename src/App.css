@@ -145,7 +145,10 @@ button {
 }
 
 .posts {
-  margin: 0 !important;
+  /* margin: 0 !important; */
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 6em);
 }
 
 ul {
@@ -596,14 +599,14 @@ button:active, .button:active {
 }
 
 @media screen and (max-width: 1280px) {
-  #sidebar {
+  /* #sidebar {
     box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.175);
     height: 100%;
     left: 0;
     position: fixed;
     top: 0;
     z-index: 10000;
-  }
+  } */
 
 
   #sidebar>.inner {

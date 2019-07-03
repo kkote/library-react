@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 import reactbook from "../Images/books/react1.jpeg";
 
 class AddBooks extends React.Component {
@@ -41,6 +42,8 @@ class AddBooks extends React.Component {
       <h2>Bookcase</h2>
       </header>
 
+
+
       <div id="bookImgMain" className="posts">
         <div className="container booksMedia">
             <img src={reactbook}alt="React1" className="image" />
@@ -53,7 +56,21 @@ class AddBooks extends React.Component {
               </div>
             </div>
           </div>
+          <div className="container booksMedia">
+              <img src={reactbook}alt="React1" className="image" />
+              <i className="fa fa-times deleteBtn"></i>
+              <div className="">
+                <div className="text">
+                  <div className="book-name">{bookTitle}</div>
+                  <div className="author-desc">{author}</div>
+                  <a href={href} target="_blank">Info</a>
+                </div>
+              </div>
+            </div>
       </div>
+
+
+
     </section>);
   }
 }

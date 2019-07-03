@@ -1,11 +1,25 @@
 import React from "react";
 import "../App.css";
-import reactbook from "../Images/books/react1.jpeg";
 
 class Searchbooks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchInput: "",
+      value: "Python",
+      error: "error"
+    };
+
+    }
+
+
+
+
+
+
   render() {
     // details is all the githubdata coming from the details prop above
-    const { details, reactbook } = this.props;
+    const { details} = this.props;
 
     return (
       <div className="infowrapper">
@@ -18,7 +32,7 @@ class Searchbooks extends React.Component {
           <a href="" target="_blank">
             Info
           </a>
-          <button className="button small">Select</button>
+          <button className="button small" onClick={this.onItemClick} >Select</button>
         </div>
       </div>
     );
