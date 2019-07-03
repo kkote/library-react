@@ -148,3 +148,16 @@ $(document).ready(function() {
 
   //end of document ready
 });;
+
+
+
+
+
+
+
+
+
+
+let numberResponse = "6";
+let bookApiSearch = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput + "&maxResults=" + numberResponse;
+sendRquest(bookApiSearch)

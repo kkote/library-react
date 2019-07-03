@@ -4,6 +4,7 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data:this.props.data,
       searchInput: "",
       value: "Python",
       error: "error"
@@ -22,9 +23,7 @@ class Sidebar extends React.Component {
     const { value } = this.state;
 
     return (
-      <div id="sidebar">
-        <div className="inner">
-          <div id="searchbar" className="">
+    
             <form onSubmit={this.props.handleSubmit}>
               <input
                 type="text"
@@ -36,13 +35,12 @@ class Sidebar extends React.Component {
                 Search
               </button>
             </form>
-          </div>
-          <header className="major">
-            <h2>Results</h2>
-          </header>
-          <div id="list" className="" />
-        </div>
-      </div>
+
+
+
+
+
+
     );
   }
 }

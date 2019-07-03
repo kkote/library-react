@@ -4,12 +4,15 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import AddBooks from "./components/addBooks";
 import Sidebar from "./components/sidebar";
+import Searchbooks from "./components/searchBooks";
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      data:"",
       books: "",
       title:"",
       search: "JavaScript",
@@ -27,6 +30,7 @@ class App extends React.Component {
 
 
 
+
   handleDataChange() {
   function handleErrors(response) {
     if (!response.ok) {
@@ -37,14 +41,19 @@ class App extends React.Component {
     return response;
   }
 
+
   fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${this.state.search}+&maxResults=3`)
     .then(handleErrors)
     .then(res => res.json())
     .then(
       result => {
+        var resulttext = result.items;
+        console.log(resulttext);
+
         this.setState({
-          title: result.items[1].volumeInfo.title,
+          data: resulttext,
+          title: resulttext[1].volumeInfo.title,
           img: "images/books/react1.jpeg",
           bookTitle: "Learning React",
           author: "Alex Banks,Eve Porcello",
@@ -52,12 +61,16 @@ class App extends React.Component {
           isLoaded: true,
           error: ""
         });
+
       },
       error => {
         this.setState({ error: "Please input valid city..." });
       }
     );
 }
+
+
+
 
 
 
@@ -90,12 +103,42 @@ class App extends React.Component {
               <div>{search}</div>
               <div>{this.state.title}</div>
               <div>{this.state.error}</div>
+
+
+
             </div>
 
             <AddBooks search={search} bookTitle={bookTitle} author={author} href={href}/>
           </div>
         </div>
-        <Sidebar xs={4} sm={4} md={4} lg={4} handleSubmit={this.onBookInput}/>
+
+
+          <div id="sidebar">
+            <div className="inner">
+              <div id="searchbar" className="">
+                <Sidebar xs={4} sm={4} md={4} lg={4} handleSubmit={this.onBookInput}
+                data={this.state.data}
+                  />
+              </div>
+
+              <header className="major">
+                <h2>Results</h2>
+              </header>
+              <div id="list" className="">
+                <div>{Object.keys(this.state.data).map(key => (  <Searchbooks key={key} details={this.state.data[key]} />
+                )
+              )} </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+
+
+
+
       </div>
       <Footer/>
     </div>);
