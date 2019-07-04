@@ -12,6 +12,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      cart:[],
+      selectedProduct:[],
       data:"",
       books: "",
       title:"",
@@ -27,9 +29,25 @@ class App extends React.Component {
     this.onBookInput = this.onBookInput.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
 
+
+
+
+      this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
 
+
+  handleAddToCart(selectedProduct) {
+    console.log("Product being added")
+
+  }
+
+
+
+
+  handleExampleData() {
+  console.log("Example Data");
+  }
 
 
   handleDataChange() {
@@ -71,21 +89,14 @@ class App extends React.Component {
 }
 
 
-
-
-
-
   onBookInput(e) {
     e.preventDefault();
     this.setState({search: e.target.search.value});
   }
 
-
-
   componentDidMount() {
     this.handleDataChange();
   }
-
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.search !== prevState.search) {
@@ -94,46 +105,48 @@ class App extends React.Component {
   }
 
   render() {
-    const {city, search, bookTitle, author, href, title} = this.state;
+    const {search, bookTitle, author, href, title} = this.state;
 
     return (<div className="App">
       <div id="wrapper">
         <div id="main">
           <div className="inner">
             <Header/>
-            <div>
-
-            </div>
-
+              <div>
+                {this.state.selectedProduct}
+          </div>
             <AddBooks search={search} bookTitle={bookTitle} author={author} href={href}/>
           </div>
         </div>
-
-
-          <div id="sidebar" class="active">
+          <div id="sidebar" className="active">
             <div className="inner">
               <div id="searchbar" className="">
                 <Sidebar xs={4} sm={4} md={4} lg={4} handleSubmit={this.onBookInput}
                 data={this.state.data}
                   />
               </div>
-
               <header className="major">
                 <h2>Results</h2>
               </header>
               <div id="list" className="">
-                <div>{Object.keys(this.state.data).map(key => (  <Searchbooks key={key} details={this.state.data[key]} />
+
+
+
+                <div>{Object.keys(this.state.data).map(key => (
+                      <Searchbooks
+                         key={key} details={this.state.data[key]}
+
+                          />
                 )
               )} </div>
-              </div>
 
+
+
+
+
+              </div>
             </div>
           </div>
-
-
-
-
-
       </div>
       <Footer/>
     </div>);

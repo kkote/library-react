@@ -19,11 +19,9 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
-    const { value } = this.state;
 
     return (
-    
+
             <form onSubmit={this.props.handleSubmit}>
               <input
                 type="text"
