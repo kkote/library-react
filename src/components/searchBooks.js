@@ -12,8 +12,15 @@ class Searchbooks extends React.Component {
       error: "error"
     };
 
+
+
+
     }
 
+
+    clickedButton(e){
+      this.props.clickedAButton(e.target.value);
+    }
 
 
     clickForAdd(){
@@ -23,37 +30,9 @@ class Searchbooks extends React.Component {
       })
     }
 
-    addToCart(image, title, author, info) {
-      this.setState(
-        {
-          selectedProduct: {
-            image: image,
-            title: title,
-            author: author,
-            info: info
-          }
-        },
 
-        function() {
-          this.props.addToCart(this.state.selectedProduct);
-        }
-      );
-      this.setState(
-        {
-          isAdded: true
-        },
 
-      {/*  function() {
-          setTimeout(() => {
-            this.setState({
-              isAdded: false,
-              selectedProduct: {}
-            });
-          }, 3500);
-        } */}
 
-      );
-    }
 
 
 
@@ -79,13 +58,14 @@ class Searchbooks extends React.Component {
 
 
 
+          <div className="book-id">{key}</div>
+
+
+
           <button className="button small"
             className={!this.state.isAdded ? "" : "added"}
             type="button"
-            onClick={this.clickForAdd.bind(
-              this
-
-            )}
+            onClick={this.clickedButton.bind(this)}
           >
             {!this.state.isAdded ? "Select" : "ADDED"}
           </button>

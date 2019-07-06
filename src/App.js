@@ -31,17 +31,13 @@ class App extends React.Component {
 
 
 
-
-      this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
 
 
-  handleAddToCart(selectedProduct) {
-    console.log("Product being added")
-
-  }
-
+  clickClick() {
+console.log('You just clicked up the state.')
+}
 
 
 
@@ -135,7 +131,7 @@ class App extends React.Component {
                 <div>{Object.keys(this.state.data).map(key => (
                       <Searchbooks
                          key={key} details={this.state.data[key]}
-
+                         clickedAButton={this.clickClick}
                           />
                 )
               )} </div>
