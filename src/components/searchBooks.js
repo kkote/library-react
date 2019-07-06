@@ -5,35 +5,20 @@ class Searchbooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchInput: "",
-      value: "Python",
       selectedProduct: {},
       isAdded: false,
       error: "error"
     };
 
-
-
-
     }
-
 
     clickedButton(e){
-      this.props.clickedAButton(e.target.value);
-    }
-
-
-    clickForAdd(){
+      this.props.clickedAButton(e);
       this.setState(
       {
         isAdded: true
       })
     }
-
-
-
-
-
 
 
   render() {
@@ -58,14 +43,14 @@ class Searchbooks extends React.Component {
 
 
 
-          <div className="book-id">{key}</div>
+          <div className="book-id"></div>
 
 
 
           <button className="button small"
             className={!this.state.isAdded ? "" : "added"}
             type="button"
-            onClick={this.clickedButton.bind(this)}
+            onClick={this.clickedButton.bind(this,key)}
           >
             {!this.state.isAdded ? "Select" : "ADDED"}
           </button>
