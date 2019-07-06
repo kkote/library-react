@@ -7,69 +7,61 @@ class AddBooks extends React.Component {
     super(props);
     this.state = {
       bookTitle: "",
-      author: "",
-      img:"",
-      href:"",
-      error: "error"
+      list: this.props.list
     };
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.currentTemp !== prevProps.currentTemp) {
-      this.addABook();
-    }
-  }
 
-  addABook() {
-    {/* const someBooks = [
-    {img: "images/books/react1.jpeg", bookTitle: "Learning React", author: "Alex Banks,Eve Porcello", href: "hh"}
-  ]; */}
-    this.setState({
-      img: "images/books/react1.jpeg",
-      bookTitle: "Learning React",
-      author: "Alex Banks,Eve Porcello",
-      href: "hh"
-    });
-  }
+
 
 
   render() {
 
-    const {img, bookTitle, author, href} = this.props;
+    const list = [
+      {
+        id: "a",
+        bookTitle: "Learning React",
+        author: "Alex Banks,Eve Porcello",
+        href: "hh"
+      }, {
+        id: "b",
+        bookTitle: "JavaScript",
+        author: "Kate K",
+        href: "hh"
+      },
+    ];
+
+
+    const List = ({list}) => (<ul>
+      {list.map(item => (<ListItem key={item.id} item={item}/>))}
+    </ul>);
+
+    const ListItem = ({item}) => (<div className="container booksMedia">
+      <img alt="React1" src={reactbook} className="image"/>
+      <i className="fa fa-times deleteBtn"></i>
+      <div className="">
+        <div className="text">
+          <div className="book-name">{item.bookTitle}</div>
+          <div className="author-desc">{item.author}</div>
+          <a href={item.href} target="_blank">Info</a>
+        </div>
+      </div>
+    </div>);
+
+
+
+
 
     return (<section id="bookcaseSection">
       <header className="major">
-      <h2>Bookcase</h2>
+        <h2>Bookcase</h2>
       </header>
 
-
-
       <div id="bookImgMain" className="posts">
-        <div className="container booksMedia">
-            <img src={reactbook}alt="React1" className="image" />
-            <i className="fa fa-times deleteBtn"></i>
-            <div className="">
-              <div className="text">
-                <div className="book-name">{bookTitle}</div>
-                <div className="author-desc">{author}</div>
-                <a href={href} target="_blank">Info</a>
-              </div>
-            </div>
-          </div>
-          <div className="container booksMedia">
-              <img src={reactbook}alt="React1" className="image" />
-              <i className="fa fa-times deleteBtn"></i>
-              <div className="">
-                <div className="text">
-                  <div className="book-name">{bookTitle}</div>
-                  <div className="author-desc">{author}</div>
-                  <a href={href} target="_blank">Info</a>
-                </div>
-              </div>
-            </div>
+
+        <List list={list} />
+
       </div>
-
-
 
     </section>);
   }

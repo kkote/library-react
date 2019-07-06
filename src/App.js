@@ -28,6 +28,9 @@ class App extends React.Component {
     this.handleDataChange = this.handleDataChange.bind(this);
   }
 
+
+
+
   clickClick(value) {
     console.log("You just clicked up the state.");
     console.log(value);
@@ -35,6 +38,33 @@ class App extends React.Component {
 
   handleExampleData() {
     console.log("Example Data");
+
+
+    const exampleJSON = {
+      items:[
+      {
+        id: "LpctBAAAQBAJ",
+        volumeInfo: {authors: ["Jon Duckett"],
+                     title: "JavaScript and JQuery"}
+      },
+      {
+        id: "LpctBAAAQBAJ",
+        volumeInfo: {authors: ["Jon Duckett"],
+                     title: "JavaScript and JQuery"}
+      },
+      {
+        id: "LpctBAAAQBAJ",
+        volumeInfo: {authors: ["Jon Duckett"],
+                     title: "JavaScript and JQuery"}
+      }
+    ],
+    kind: "books#volumes",
+    totalItems: 2282
+
+    }
+
+
+
   }
 
   handleDataChange() {
@@ -89,6 +119,10 @@ class App extends React.Component {
   }
 
   render() {
+
+
+
+
     const { search, bookTitle, author, href, title, data, dataResult } = this.state;
 
     const posts = Object.keys(this.state.data).map(key => (
@@ -103,17 +137,13 @@ class App extends React.Component {
               <Header />
 
               <div>
-                
+
 
 
               </div>
 
-              <AddBooks
-                search={search}
-                bookTitle={bookTitle}
-                author={author}
-                href={href}
-              />
+              <AddBooks />
+
             </div>
           </div>
           <div id="sidebar" className="active">
@@ -133,7 +163,7 @@ class App extends React.Component {
                     <Searchbooks
                       key={key}
                       details={this.state.data[key]}
-                      clickedAButton={this.clickClick}
+                      clickedAButton={this.clickClick.bind(this)}
                     />
                   ))}{" "}
                 </div>
