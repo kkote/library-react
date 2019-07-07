@@ -31,36 +31,8 @@ class App extends React.Component {
     console.log(value);
   }
 
-  handleExampleData() {
-    console.log("Example Data");
 
 
-    const exampleJSON = {
-      items:[
-      {
-        id: "LpctBAAAQBAJ",
-        volumeInfo: {authors: ["Jon Duckett"],
-                     title: "JavaScript and JQuery"}
-      },
-      {
-        id: "h56ansk4SyQC",
-        volumeInfo: {authors: ["Joseph Eddy Fontenrose"],
-                     title: "Python"}
-      },
-      {
-        id: "LpctBAAAQBAJ",
-        volumeInfo: {authors: ["Jon Duckett"],
-                     title: "JavaScript and JQuery"}
-      }
-    ],
-    kind: "books#volumes",
-    totalItems: 2282
-
-    }
-
-
-
-  }
 
   handleDataChange() {
     function handleErrors(response) {
@@ -105,6 +77,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.handleDataChange();
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -143,8 +116,6 @@ class App extends React.Component {
                 <h2>Results</h2>
               </header>
               <div id="list" className="">
-
-
                 <div>
 
                   <Searchbooks

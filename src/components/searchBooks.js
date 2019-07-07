@@ -13,8 +13,9 @@ class Searchbooks extends React.Component {
 
     }
 
-    clickedButton(e){
-      this.props.clickedAButton(e);
+    clickedButton(item, e){
+      console.log(item);
+      this.props.clickedAButton(item);
       this.setState(
       {
         isAdded: true
@@ -26,10 +27,6 @@ class Searchbooks extends React.Component {
 
     const { lists }  = this.state;
 
-
-
-
-
     const List = ({ lists }) => (
 
     Object.keys(this.props.lists).map(key => (
@@ -38,16 +35,13 @@ class Searchbooks extends React.Component {
       item={this.props.lists[key]}
       />
     ))
-
     );
 
 
-
-
-  const ListItem = ({ item }) => (
+  const ListItem = ({ key, item}) => (
     <div className="infowrapper">
     <div className="img-div">
-      <img src={item.volumeInfo.img} alt="React1" />
+      <img src={item.volumeInfo.imageLinks.thumbnail} alt="React1" />
     </div>
     <div className="infogroup">
       <div className="book-name">{item.volumeInfo.title}</div>
@@ -60,7 +54,9 @@ class Searchbooks extends React.Component {
       <button className="button small"
         className={!this.state.isAdded ? "" : "added"}
         type="button"
-        onClick={this.clickedButton.bind(this)}
+
+        onClick={this.clickedButton.bind(this, item)}
+
       >
         {!this.state.isAdded ? "Select" : "ADDED"}
       </button>
