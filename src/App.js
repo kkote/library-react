@@ -11,9 +11,27 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      dataResult:"",
       data: "",
-      bookcaseBooks:null,
+      bookcaseBooks:[{
+        id: "LpctBAAAQBAJ",
+        volumeInfo: {authors: ["Jon Duckett, Example"],
+                     title: "JavaScript and JQuery - Example",
+                      infoLink:"http://books.google.com/books?id=LpctBAAAQBAJ&dq=JavaScript&hl=&source=gbs_api",
+                      imageLinks:{
+                        thumbnail:"http://books.google.com/books/content?id=LpctBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                      }
+                    }
+      },
+      {
+        id: "LpctBAAAQBAJ",
+        volumeInfo: {authors: ["Jon Duckett, Example"],
+                     title: "JavaScript and JQuery - Example",
+                      infoLink:"http://books.google.com/books?id=LpctBAAAQBAJ&dq=JavaScript&hl=&source=gbs_api",
+                      imageLinks:{
+                        thumbnail:"http://books.google.com/books/content?id=LpctBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                      }
+                    }
+      }],
       search: "JavaScript",
       selectedBook: "",
       isLoaded: false,
@@ -30,19 +48,15 @@ class App extends React.Component {
     const bookCase = this.state.bookcaseBooks
     console.log("You just clicked up the state.");
     console.log(`value(selectedbook) is`);
-      console.log(value);
-      console.log(`Bookcase before is:`);
-      console.log(bookCase);
 
     const allBooks = [this.state.bookcaseBooks, value]
 
-    this.setState(
-          ((this.state.bookcaseBooks) == null) ? ({  bookcaseBooks: value })
-          : ({ bookcaseBooks: allBooks})
-        );
-        console.log(`Bookcase after using state is:`);
-        console.log(bookCase);
+    this.setState(state => (
+      {bookcaseBooks: state.bookcaseBooks.concat(value)}
+    ))
   }
+
+
 
 
 
@@ -71,7 +85,6 @@ class App extends React.Component {
 
           this.setState({
             data: resulttext,
-            dataResult: result,
             isLoaded: true,
             error: ""
           });
@@ -86,8 +99,6 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({ search: e.target.search.value });
   }
-
-
 
 
   componentDidMount() {
