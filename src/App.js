@@ -57,7 +57,7 @@ class App extends React.Component {
       console.log(resulttext);
       this.setState({data: resulttext, isLoaded: true, error: ""});
     }, error => {
-      this.setState({error: "Please input valid city..."});
+      this.setState({error: "Please input valid search..."});
     });
   }
 
