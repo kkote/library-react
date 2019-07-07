@@ -28,9 +28,9 @@ class AddBooks extends React.Component {
       },
     ];
 
-    const List = ({list}) => (<ul>
-      {list.map(item => (<ListItem key={item.id} item={item}/>))}
-    </ul>);
+    const List = ({list}) => (
+      list.map(item => (<ListItem key={item.id} item={item}/>))
+    );
 
     const ListItem = ({item}) => (<div className="container booksMedia">
       <img alt="React1" src={reactbook} className="image"/>
@@ -39,7 +39,7 @@ class AddBooks extends React.Component {
         <div className="text">
           <div className="book-name">{item.bookTitle}</div>
           <div className="author-desc">{item.author}</div>
-          <a href={item.href} target="_blank">Info</a>
+          <a href={item.href} target="_blank" rel="noopener noreferrer">Info</a>
         </div>
       </div>
     </div>);

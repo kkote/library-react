@@ -25,7 +25,7 @@ class Searchbooks extends React.Component {
 
   render() {
 
-    const { lists }  = this.state;
+
 
     const List = ({ lists }) => (
 
@@ -46,15 +46,12 @@ class Searchbooks extends React.Component {
     <div className="infogroup">
       <div className="book-name">{item.volumeInfo.title}</div>
       <div className="author-desc">{item.volumeInfo.authors}</div>
-      <a href={item.volumeInfo.infoLink} target="_blank">
+      <a href={item.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer">
         Info
       </a>
-      <div className="book-id">{item.id}</div>
 
       <button className="button small"
-        className={!this.state.isAdded ? "" : "added"}
         type="button"
-
         onClick={this.clickedButton.bind(this, item)}
 
       >

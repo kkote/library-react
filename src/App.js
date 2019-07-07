@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       dataResult:"",
       data: "",
-      books: "",
+      bookcaseBooks: undefined,
       search: "JavaScript",
       selectedBook: "",
       isLoaded: false,
@@ -27,10 +27,22 @@ class App extends React.Component {
 
 
   clickClick(value) {
+    const bookCase = this.state.bookcaseBooks
     console.log("You just clicked up the state.");
-    console.log(value);
-  }
+    console.log(`value(selectedbook) is`);
+      console.log(value);
+      console.log(`Bookcase before is:`);
+      console.log(bookCase);
 
+    const allBooks = [this.state.bookcaseBooks, value]
+
+    this.setState(
+          (this.state.bookcaseBooks !== undefined) ? ({ bookcaseBooks: allBooks })
+          : ({ bookcaseBooks: value })
+        );
+        console.log(`Bookcase after using state is:`);
+        console.log(bookCase);
+  }
 
 
 
@@ -75,9 +87,12 @@ class App extends React.Component {
     this.setState({ search: e.target.search.value });
   }
 
-  componentDidMount() {
-    this.handleDataChange();
 
+
+
+  componentDidMount() {
+
+    this.handleDataChange();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -87,8 +102,6 @@ class App extends React.Component {
   }
 
   render() {
-
-    const { search, data, dataResult } = this.state;
 
     return (
       <div className="App">
@@ -100,7 +113,7 @@ class App extends React.Component {
               <div>
               </div>
 
-              <AddBooks />
+              <AddBooks bookcaseBooks={this.state.bookcaseBooks}/>
 
             </div>
           </div>
