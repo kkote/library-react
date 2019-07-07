@@ -12,9 +12,6 @@ class AddBooks extends React.Component {
   };
 
 
-
-
-
   render() {
 
     const list = [
@@ -30,7 +27,6 @@ class AddBooks extends React.Component {
         href: "hh"
       },
     ];
-
 
     const List = ({list}) => (<ul>
       {list.map(item => (<ListItem key={item.id} item={item}/>))}
@@ -49,20 +45,15 @@ class AddBooks extends React.Component {
     </div>);
 
 
-
-
-
     return (<section id="bookcaseSection">
       <header className="major">
         <h2>Bookcase</h2>
       </header>
-
       <div id="bookImgMain" className="posts">
 
         <List list={list} />
 
       </div>
-
     </section>);
   }
 }

@@ -14,12 +14,7 @@ class App extends React.Component {
       dataResult:"",
       data: "",
       books: "",
-      title: "",
       search: "JavaScript",
-      bookTitle: "",
-      author: "",
-      img: "",
-      href: "",
       selectedBook: "",
       isLoaded: false,
       error: ""
@@ -48,9 +43,9 @@ class App extends React.Component {
                      title: "JavaScript and JQuery"}
       },
       {
-        id: "LpctBAAAQBAJ",
-        volumeInfo: {authors: ["Jon Duckett"],
-                     title: "JavaScript and JQuery"}
+        id: "h56ansk4SyQC",
+        volumeInfo: {authors: ["Joseph Eddy Fontenrose"],
+                     title: "Python"}
       },
       {
         id: "LpctBAAAQBAJ",
@@ -120,15 +115,8 @@ class App extends React.Component {
 
   render() {
 
+    const { search, data, dataResult } = this.state;
 
-
-
-    const { search, bookTitle, author, href, title, data, dataResult } = this.state;
-
-    const posts = Object.keys(this.state.data).map(key => (
-        {key}
-
-    ))
     return (
       <div className="App">
         <div id="wrapper">
@@ -137,9 +125,6 @@ class App extends React.Component {
               <Header />
 
               <div>
-
-
-
               </div>
 
               <AddBooks />
@@ -158,14 +143,16 @@ class App extends React.Component {
                 <h2>Results</h2>
               </header>
               <div id="list" className="">
+
+
                 <div>
-                  {Object.keys(this.state.data).map(key => (
-                    <Searchbooks
-                      key={key}
-                      details={this.state.data[key]}
-                      clickedAButton={this.clickClick.bind(this)}
-                    />
-                  ))}{" "}
+
+                  <Searchbooks
+                    lists={this.state.data}
+                    clickedAButton={this.clickClick.bind(this)}
+                  />
+
+                {" "}
                 </div>
               </div>
             </div>
