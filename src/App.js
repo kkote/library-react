@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       dataResult:"",
       data: "",
-      bookcaseBooks: undefined,
+      bookcaseBooks:null,
       search: "JavaScript",
       selectedBook: "",
       isLoaded: false,
@@ -37,8 +37,8 @@ class App extends React.Component {
     const allBooks = [this.state.bookcaseBooks, value]
 
     this.setState(
-          (this.state.bookcaseBooks !== undefined) ? ({ bookcaseBooks: allBooks })
-          : ({ bookcaseBooks: value })
+          ((this.state.bookcaseBooks) == null) ? ({  bookcaseBooks: value })
+          : ({ bookcaseBooks: allBooks})
         );
         console.log(`Bookcase after using state is:`);
         console.log(bookCase);
