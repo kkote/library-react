@@ -1,6 +1,5 @@
 import React from "react";
 import "../App.css";
-import reactbook from "../Images/books/react1.jpeg";
 
 class AddBooks extends React.Component {
   constructor(props) {
@@ -11,17 +10,12 @@ class AddBooks extends React.Component {
     };
   };
 
-
   render() {
 
-    
-
-    const List = ({list}) => (
-      (this.props.bookcaseBooks).map(item => (<ListItem key={item.id} item={item}/>))
-    );
+    const List = ({list}) => ((this.props.bookcaseBooks).map(item => (<ListItem key={item.id} item={item}/>)));
 
     const ListItem = ({item}) => (<div className="container booksMedia">
-      <img alt="React1" src={reactbook} className="image"/>
+      <img alt="React1" src={item.volumeInfo.imageLinks.thumbnail} className="image"/>
       <i className="fa fa-times deleteBtn"></i>
       <div className="">
         <div className="text">
@@ -32,14 +26,13 @@ class AddBooks extends React.Component {
       </div>
     </div>);
 
-
     return (<section id="bookcaseSection">
       <header className="major">
         <h2>Bookcase</h2>
       </header>
       <div id="bookImgMain" className="posts">
 
-        <List list={this.props.bookcaseBooks} />
+        <List list={this.props.bookcaseBooks}/>
 
       </div>
     </section>);

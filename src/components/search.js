@@ -8,31 +8,23 @@ class Search extends React.Component {
     this.state = {
       value: "Python"
     };
-
     this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({value: event.target.value});
   }
 
   render() {
-    return (
-      <div className="blogsearchpaper">
-        <form onSubmit={this.props.handleSubmit}>
-          <input
-            type="text"
-            name="book"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <Button size="small" variant="contained" type="submit">
-            <i className="material-icons">search</i>
-          </Button>
-        </form>
+    return (<div className="blogsearchpaper">
+    
+      <form onSubmit={this.props.handleSubmit}>
+        <input type="text" name="book" value={this.state.value} onChange={this.handleChange}/>
+        <Button size="small" variant="contained" type="submit">
+          <i className="material-icons">search</i>
+        </Button>
+      </form>
 
-      </div>
-    );
+    </div>);
   }
 }
 

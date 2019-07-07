@@ -1,5 +1,6 @@
 
 import React from "react";
+import bookimage from "../Images/books/bannerbook1.jpg";
 
 const Header = props => {
   return (
@@ -19,6 +20,7 @@ const Header = props => {
         </ul>
       </div>
       <span className="image object">
+        <img alt="bannerbook" src={bookimage} className="image"/>
         </span>
       </section>);
 }
