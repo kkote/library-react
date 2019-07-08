@@ -13,9 +13,8 @@ class AddBooks extends React.Component {
 
 
   clickToRemove(item, e){
-    console.log("clicked item to remove:");
-    console.log(item);
-    this.props.removeItem(item);
+    console.log("clicked an item to remove");
+    this.props.removeItem(item.id);
   }
 
 

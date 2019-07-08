@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
   addSelectedBook(value) {
-    const bookCase = this.state.bookcaseBooks
     console.log("You just clicked up the state.");
     console.log(`value(selectedbook) is`);
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
@@ -45,8 +44,13 @@ class App extends React.Component {
 
   onRemoveItem = id => {
    const { bookcaseBooks } = this.state;
+   console.log("onRemoveItem Id:")
+   console.log(id);
+
 
    const list = (this.state.bookcaseBooks).filter(item => item.id !== id);
+   console.log("the list from filter:")
+   console.log(list)
 
    this.setState({ bookcaseBooks: list});
   };
@@ -80,7 +84,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("Did Mount");
-    {/* this.handleDataChange(); */}
+    this.handleDataChange();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -114,7 +118,7 @@ class App extends React.Component {
             <div id="list" className="">
               <div>
 
-                <Searchbooks lists={this.state.data} clickedAButton={this.addSelectedBook}/> {" "}
+                <Searchbooks lists={this.state.data} clickedAButton={this.addSelectedBook.bind(this)}/> {" "}
               </div>
             </div>
           </div>
