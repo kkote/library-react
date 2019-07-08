@@ -21,6 +21,7 @@ class Searchbooks extends React.Component {
       })
     }
 
+
   render() {
     const List = ({ lists }) => (
 
@@ -48,7 +49,7 @@ class Searchbooks extends React.Component {
         type="button"
         onClick={this.clickedButton.bind(this, item)}
       >
-        {!this.state.isAdded ? "Select" : "ADDED"}
+        {(this.props.bookcaseBooks).indexOf(item) > -1 ? "ADDED" : "Select"}
       </button>
 
     </div>

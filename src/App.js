@@ -35,8 +35,6 @@ class App extends React.Component {
   }
 
   addSelectedBook(value) {
-    console.log("You just clicked up the state.");
-    console.log(`value(selectedbook) is`);
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
   }
 
@@ -44,18 +42,10 @@ class App extends React.Component {
 
   onRemoveItem = id => {
    const { bookcaseBooks } = this.state;
-   console.log("onRemoveItem Id:")
-   console.log(id);
-
-
    const list = (this.state.bookcaseBooks).filter(item => item.id !== id);
-   console.log("the list from filter:")
-   console.log(list)
 
    this.setState({ bookcaseBooks: list});
   };
-
-
 
   handleDataChange() {
     function handleErrors(response) {
@@ -69,8 +59,6 @@ class App extends React.Component {
 
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}+&maxResults=3`).then(handleErrors).then(res => res.json()).then(result => {
       var resulttext = result.items;
-      console.log(result);
-      console.log(resulttext);
       this.setState({data: resulttext, isLoaded: true, error: ""});
     }, error => {
       this.setState({error: "Please input valid search..."});
@@ -84,7 +72,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("Did Mount");
-    this.handleDataChange(); 
+    this.handleDataChange();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -118,7 +106,10 @@ class App extends React.Component {
             <div id="list" className="">
               <div>
 
-                <Searchbooks lists={this.state.data} clickedAButton={this.addSelectedBook.bind(this)}/> {" "}
+                <Searchbooks
+                  lists={this.state.data}
+                  bookcaseBooks={this.state.bookcaseBooks}
+                   clickedAButton={this.addSelectedBook.bind(this)}/> {" "}
               </div>
             </div>
           </div>
