@@ -10,7 +10,6 @@ class Searchbooks extends React.Component {
       list: this.props.list,
       error: "error"
     };
-
     }
 
     clickedButton(item, e){
@@ -22,11 +21,7 @@ class Searchbooks extends React.Component {
       })
     }
 
-
   render() {
-
-
-
     const List = ({ lists }) => (
 
     Object.keys(this.props.lists).map(key => (
@@ -36,7 +31,6 @@ class Searchbooks extends React.Component {
       />
     ))
     );
-
 
   const ListItem = ({ key, item}) => (
     <div className="infowrapper">
@@ -53,7 +47,6 @@ class Searchbooks extends React.Component {
       <button className="button small"
         type="button"
         onClick={this.clickedButton.bind(this, item)}
-
       >
         {!this.state.isAdded ? "Select" : "ADDED"}
       </button>
@@ -62,12 +55,8 @@ class Searchbooks extends React.Component {
     </div>
   );
 
-
     return (
-
       <List />
-
-
     );
   }
 }

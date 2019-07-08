@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { FaTimes } from 'react-icons/fa';
 
 class AddBooks extends React.Component {
   constructor(props) {
@@ -10,13 +11,29 @@ class AddBooks extends React.Component {
     };
   };
 
+
+  clickToRemove(item, e){
+    console.log("clicked item to remove:");
+    console.log(item);
+    this.props.removeItem(item);
+  }
+
+
   render() {
 
     const List = ({list}) => ((this.props.bookcaseBooks).map(item => (<ListItem key={item.id} item={item}/>)));
 
-    const ListItem = ({item}) => (<div className="container booksMedia">
+    const ListItem = ({item, index}) => (<div className="container booksMedia">
       <img alt="React1" src={item.volumeInfo.imageLinks.thumbnail} className="image"/>
-      <i className="fa fa-times deleteBtn"></i>
+
+        <button className="fa fa-times"
+          type="button"
+          onClick={() => this.clickToRemove(item)}
+        >
+          </button>
+
+
+
       <div className="">
         <div className="text">
           <div className="book-name">{item.volumeInfo.title}</div>

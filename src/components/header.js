@@ -20,7 +20,7 @@ const Header = props => {
         </ul>
       </div>
       <span className="image object">
-        <img alt="bannerbook" src={bookimage} className="image"/>
+        <img alt="bannerbook" src={bookimage} />
         </span>
       </section>);
 }
