@@ -84,7 +84,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("Did Mount");
-    this.handleDataChange();
+    {/* this.handleDataChange(); */}
   }
 
   componentDidUpdate(prevProps, prevState) {

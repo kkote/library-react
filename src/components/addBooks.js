@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { FaTimes } from 'react-icons/fa';
+import {FaTimes} from 'react-icons/fa';
 
 class AddBooks extends React.Component {
   constructor(props) {
@@ -11,12 +11,10 @@ class AddBooks extends React.Component {
     };
   };
 
-
-  clickToRemove(item, e){
+  clickToRemove(item, e) {
     console.log("clicked an item to remove");
     this.props.removeItem(item.id);
   }
-
 
   render() {
 
@@ -25,15 +23,11 @@ class AddBooks extends React.Component {
     const ListItem = ({item, index}) => (<div className="container booksMedia">
       <img alt="React1" src={item.volumeInfo.imageLinks.thumbnail} className="image"/>
 
-        <button className="fa fa-times"
-          type="button"
-          onClick={() => this.clickToRemove(item)}
-        >
-          </button>
+      <i className="fa fa-times deleteBtn" type="button" onClick={() => this.clickToRemove(item)}>
+        <FaTimes/>
+      </i>
 
-
-
-      <div className="">
+      <div className="overlay">
         <div className="text">
           <div className="book-name">{item.volumeInfo.title}</div>
           <div className="author-desc">{item.volumeInfo.authors}</div>
