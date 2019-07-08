@@ -84,7 +84,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("Did Mount");
-    {/* this.handleDataChange(); */}
+    this.handleDataChange(); 
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -122,7 +122,6 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          
 
 
         </div>
