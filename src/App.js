@@ -26,7 +26,6 @@ class App extends React.Component {
         }
       ],
       search: "Python",
-      selectedBook: "",
       isLoaded: false,
       error: ""
     };
@@ -37,7 +36,6 @@ class App extends React.Component {
   addSelectedBook(value) {
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
   }
-
 
 
   onRemoveItem = id => {
@@ -57,7 +55,7 @@ class App extends React.Component {
       return response;
     }
 
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}+&maxResults=3`).then(handleErrors).then(res => res.json()).then(result => {
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.search}+&maxResults=4`).then(handleErrors).then(res => res.json()).then(result => {
       var resulttext = result.items;
       this.setState({data: resulttext, isLoaded: true, error: ""});
     }, error => {
@@ -87,6 +85,25 @@ class App extends React.Component {
       <div id="wrapper">
         <div id="main">
           <div className="inner">
+
+
+            <header id="header">
+									<div class="icons">
+                    <form>
+
+    <input type="text" name="name" placeholder="Username"/>
+    <input type="text" name="name" placeholder="password"/>
+
+  <button>Sign In</button>
+  <button>Sign Up</button>
+</form>
+
+
+
+									</div>
+								</header>
+
+
             <Header/>
 
             <AddBooks bookcaseBooks={this.state.bookcaseBooks}
