@@ -29,15 +29,18 @@ class App extends React.Component {
       search: "Python",
       isLoaded: false,
       user: null,
-      allUsers: "",
+      allUsers: [
+        {
+          username: "Taylor",
+          password: "pa55"
+        }
+      ],
       error: ""
     };
     this.onBookInput = this.onBookInput.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
 
   }
-
-
 
   addSelectedBook(value) {
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
@@ -84,12 +87,9 @@ class App extends React.Component {
     }
   }
 
-  addSelectedBook(value) {
-    this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
-  }
-
   signIn(username, password) {
-    console.log("this is signIn, for api")
+    console.log("this is signIn, for api");
+
     // where call API,
     // calling setState will re-render the entire app (efficiently!)
     this.setState({
@@ -98,11 +98,8 @@ class App extends React.Component {
         password
       }
     })
-    console.log(this.state.user);
+
   }
-
-
-
 
   signOut() {
     // clear out user from state
@@ -124,7 +121,7 @@ class App extends React.Component {
         <div id="main">
           <div className="inner">
             <header id="header">
-              
+
               <div className="icons">
                 <div>
                   {
