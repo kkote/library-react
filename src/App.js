@@ -27,22 +27,25 @@ class App extends React.Component {
       ],
       search: "Python",
       isLoaded: false,
+      userid:"",
+      password:"",
       error: ""
     };
     this.onBookInput = this.onBookInput.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
 
   addSelectedBook(value) {
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
   }
 
-
   onRemoveItem = id => {
-   const { bookcaseBooks } = this.state;
-   const list = (this.state.bookcaseBooks).filter(item => item.id !== id);
+    const {bookcaseBooks} = this.state;
+    const list = (this.state.bookcaseBooks).filter(item => item.id !== id);
 
-   this.setState({ bookcaseBooks: list});
+    this.setState({bookcaseBooks: list});
   };
 
   handleDataChange() {
@@ -79,36 +82,56 @@ class App extends React.Component {
     }
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+  handleLoginSubmit(event) {
+    console.log(this.state.userid);
+    console.log(this.state.password);
+     event.preventDefault();
+   }
+
+
+
+
   render() {
 
     return (<div className="App">
       <div id="wrapper">
         <div id="main">
           <div className="inner">
-
-
             <header id="header">
-									<div class="icons">
-                    <form>
-
-    <input type="text" name="name" placeholder="Username"/>
-    <input type="text" name="name" placeholder="password"/>
-
-  <button>Sign In</button>
-  <button>Sign Up</button>
-</form>
+              <div className="icons">
 
 
+                <form onSubmit={this.handleLoginSubmit}>
+                  <input
+                    type="text"
+                    name="userid"
+                    placeholder="Username" value={this.state.userid} onChange={this.handleInputChange}/>
 
-									</div>
-								</header>
+                  <input
+                    type="text"
+                    name="password"
+                    placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
 
+                  <button type="submit" value="Submit">Sign In</button>
+
+                </form>
+
+
+              </div>
+            </header>
 
             <Header/>
 
-            <AddBooks bookcaseBooks={this.state.bookcaseBooks}
-            removeItem={this.onRemoveItem.bind(this)}
-              />
+            <AddBooks bookcaseBooks={this.state.bookcaseBooks} removeItem={this.onRemoveItem.bind(this)}/>
 
           </div>
         </div>
@@ -123,14 +146,10 @@ class App extends React.Component {
             <div id="list" className="">
               <div>
 
-                <Searchbooks
-                  lists={this.state.data}
-                  bookcaseBooks={this.state.bookcaseBooks}
-                   clickedAButton={this.addSelectedBook.bind(this)}/> {" "}
+                <Searchbooks lists={this.state.data} bookcaseBooks={this.state.bookcaseBooks} clickedAButton={this.addSelectedBook.bind(this)}/> {" "}
               </div>
             </div>
           </div>
-
 
         </div>
       </div>
