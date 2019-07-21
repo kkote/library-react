@@ -5,6 +5,7 @@ import Header from "./components/header";
 import AddBooks from "./components/addBooks";
 import Sidebar from "./components/sidebar";
 import Searchbooks from "./components/searchBooks";
+import LoginForm from "./components/login";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,15 +28,16 @@ class App extends React.Component {
       ],
       search: "Python",
       isLoaded: false,
-      userid:"",
-      password:"",
+      user: null,
+      allUsers: "",
       error: ""
     };
     this.onBookInput = this.onBookInput.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+
   }
+
+
 
   addSelectedBook(value) {
     this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
@@ -82,49 +84,55 @@ class App extends React.Component {
     }
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
+  addSelectedBook(value) {
+    this.setState(state => ({bookcaseBooks: state.bookcaseBooks.concat(value)}))
   }
-  handleLoginSubmit(event) {
-    console.log(this.state.userid);
-    console.log(this.state.password);
-     event.preventDefault();
-   }
+
+  signIn(username, password) {
+    console.log("this is signIn, for api")
+    // where call API,
+    // calling setState will re-render the entire app (efficiently!)
+    this.setState({
+      user: {
+        username,
+        password
+      }
+    })
+    console.log(this.state.user);
+  }
 
 
 
+
+  signOut() {
+    // clear out user from state
+    this.setState({user: null})
+  }
 
   render() {
+    const Welcome = ({user, onSignOut}) => {
+      // This is a dumb "stateless" component
+      return (<div>
+        Welcome
+        <strong> {user.username}</strong>!
+        <a href="javascript:;" onClick={onSignOut}>Sign out</a>
+      </div>)
+    }
 
     return (<div className="App">
       <div id="wrapper">
         <div id="main">
           <div className="inner">
             <header id="header">
+              
               <div className="icons">
-
-
-                <form onSubmit={this.handleLoginSubmit}>
-                  <input
-                    type="text"
-                    name="userid"
-                    placeholder="Username" value={this.state.userid} onChange={this.handleInputChange}/>
-
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="password" value={this.state.password} onChange={this.handleInputChange}/>
-
-                  <button type="submit" value="Submit">Sign In</button>
-
-                </form>
-
+                <div>
+                  {
+                    (this.state.user)
+                      ? <Welcome user={this.state.user} onSignOut={this.signOut.bind(this)}/>
+                      : <LoginForm onSignIn={this.signIn.bind(this)}/>
+                  }
+                </div>
 
               </div>
             </header>
