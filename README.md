@@ -1,22 +1,26 @@
 # Library App
-> Search and add books to make a digital library of books you own.
 
 
 Uses Google Books API to search and select to add book to the bookshelf.
 
 
 
-## Usage example
 
-Keep track of books you own, make a list of books you want, keep track of loaned items, or get more information.
-
+# How to Use
+1. Clone or Download repo.
+2. cd into folder.
+3. Run  ``` npm install ```.
+5. Run  ``` npm start ```.
+5. Go to local dev port 8000 (http://localhost:8000)
+6. Make changes in src/ 
 
 
 ## Built With
 
-* [React](https://reactjs.org/) - JavaScript
-* [Google Books Api](https://developers.google.com/books/) - API
-* [Html5](https://html5up.net/editorial) - Layout
+* JavaScript
+* [React](https://reactjs.org/) 
+* [Google Books Api](https://developers.google.com/books/) 
+* [Html5](https://html5up.net/editorial) 
 
 
 ## Author
