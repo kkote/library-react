@@ -1,9 +1,7 @@
 # Library App
 
-
-Uses Google Books API to search and select to add book to the bookshelf.
-
-
+Web application using JavaScript, React, and the Google Books API, enabling users to catalog and manage their personal book collection by searching for books, viewing details, and adding them to their library.
+Web app for users to catalog, manage, search, view details, and add books to their personal collection.
 
 
 # How to Use
